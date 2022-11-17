@@ -1,13 +1,9 @@
-let bright = 0
 let y = 0
-let a = 0
 let x = 2
 let dx = 1
 basic.forever(function () {
     basic.clearScreen()
-    a = 0
     y = 0
-    bright = 225
     if (x >= 4) {
         dx = -1
     } else if (x <= 0) {
@@ -15,9 +11,10 @@ basic.forever(function () {
     }
     x += dx
     for (let index = 0; index < 5; index++) {
-        led.plotBrightness(x - dx * a, y, bright)
-        a += 1
-        bright += -50
+        for (let index = 0; index <= 4; index++) {
+            led.plotBrightness(x - dx * index, y, 225 - index * 50)
+        }
+        y += 1
     }
     basic.pause(300)
 })
